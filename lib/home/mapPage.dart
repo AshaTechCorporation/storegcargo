@@ -13,7 +13,7 @@ class MapPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.white),
-        backgroundColor: kTextRedWanningColor,
+        backgroundColor: kButtonColor,
         title: Text('ตำแหน่งผู้รับ', style: TextStyle(color: Colors.white, fontSize: 18)),
       ),
       body: GoogleMap(

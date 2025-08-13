@@ -99,14 +99,6 @@ class _ListOrdersMapPageState extends State<ListOrdersMapPage> with SingleTicker
         deliveryCompleted = completed;
         deliveryOrders = others;
 
-        // for (var i = 0; i < others.length; i++) {
-        //   if (others[i].delivery_order_thai_lists?.isNotEmpty ?? false) {
-        //     selectedPosition = LatLng(double.parse(others[i].delivery_order_thai_lists?.first.delivery_order?.member?.member_address?.latitude ?? '0.0'),
-        //         double.parse(others[i].delivery_order_thai_lists?.first.delivery_order?.member?.member_address?.longitude ?? '0.0'));
-        //     return;
-        //   }
-        // }
-
         WidgetsBinding.instance.addPostFrameCallback((_) {
           if (_scrollController.hasClients) {
             _scrollController.animateTo(0.0, duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
@@ -679,49 +671,6 @@ class _ListOrdersMapPageState extends State<ListOrdersMapPage> with SingleTicker
     );
   }
 
-  Widget _buildDrawer(BuildContext context) {
-    return Drawer(
-      backgroundColor: Colors.white,
-      child: ListView(
-        padding: EdgeInsets.zero,
-        children: [
-          DrawerHeader(
-            decoration: BoxDecoration(color: kTextRedWanningColor),
-            child: Row(children: [Image.asset('assets/images/Logo_White.png', scale: 2), SizedBox(width: 10)]),
-          ),
-          ListTile(
-            leading: Icon(Icons.person, color: Colors.grey[700]),
-            title: Text('Profile', style: TextStyle(fontWeight: FontWeight.w500)),
-            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage())),
-          ),
-          Divider(height: 1),
-          ListTile(
-            leading: Icon(Icons.output_outlined, color: Colors.grey[700]),
-            title: Text('Logout', style: TextStyle(fontWeight: FontWeight.w500)),
-            onTap: () async {
-              final ok = await showDialog(
-                context: context,
-                builder:
-                    (context) => Dialogyesno(
-                      title: 'แจ้งเตือน',
-                      description: 'คุณต้องการออกจากระบบหรือไม่',
-                      pressYes: () => Navigator.pop(context, true),
-                      pressNo: () => Navigator.pop(context, false),
-                      bottomNameYes: 'ตกลง',
-                      bottomNameNo: 'ยกเลิก',
-                    ),
-              );
-              if (ok == true) {
-                await clearToken();
-                Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => Loginpage()), (route) => false);
-              }
-            },
-          ),
-        ],
-      ),
-    );
-  }
-
   Widget _buildDeliveryMapView(Size size, BuildContext context) {
     return deliveryOrders.isEmpty
         ? Center(
@@ -903,27 +852,5 @@ class _ListOrdersMapPageState extends State<ListOrdersMapPage> with SingleTicker
         ),
       ),
     );
-  }
-
-  Widget _buildCompletedDeliveriesView() {
-    return deliveryCompleted.isEmpty
-        ? Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(Icons.check_circle_outline, size: 48, color: Colors.grey[400]),
-              SizedBox(height: 16),
-              Text('ไม่พบรายการจัดส่งสำเร็จ', style: TextStyle(fontSize: 16, color: Colors.grey[600])),
-            ],
-          ),
-        )
-        : ListView.separated(
-          padding: EdgeInsets.all(16),
-          itemCount: deliveryCompleted.length,
-          separatorBuilder: (context, index) => SizedBox(height: 12),
-          itemBuilder: (context, index) {
-            return _buildDeliveryInfoCard(deliveryCompleted[index], MediaQuery.of(context).size);
-          },
-        );
   }
 }

@@ -54,23 +54,6 @@ class HomeApi {
     }
   }
 
-  // static Future<List<DeliveryOrders>> getDeliveryOrders() async {
-  //   final url = Uri.https(publicUrl, '/api/get_delivery_orders_thai');
-  //   var headers = {'Content-Type': 'application/json'};
-  //   final response = await http.get(
-  //     headers: headers,
-  //     url,
-  //   );
-  //   if (response.statusCode == 200) {
-  //     final data = convert.jsonDecode(response.body);
-  //     final list = data['data'] as List;
-  //     return list.map((e) => DeliveryOrders.fromJson(e)).toList();
-  //   } else {
-  //     final data = convert.jsonDecode(response.body);
-  //     throw Exception(data['message']);
-  //   }
-  // }
-
   static Future<DeliveryOrders> getDeliveryOrdersId({required int id}) async {
     final url = Uri.https(publicUrl, '/public/api/delivery_orders_thai/$id');
     var headers = {'Content-Type': 'application/json'};

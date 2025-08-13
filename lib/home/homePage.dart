@@ -53,12 +53,6 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
         if (check == true) {
           await getlistOrderDelivery();
         }
-        // if (index == 0) {
-        //   // _showParcelDialog(
-        //   //     delivery); // กดไอเทมตัวแรกให้ขึ้น Dialog "Parcel Info"
-        // } else if (index == 1) {
-        //   _showChangeStatusDialog(); // กดไอเทมที่สองให้ขึ้น Dialog "Change Status"
-        // }
       },
       child: Card(
         margin: EdgeInsets.symmetric(vertical: 8, horizontal: 12),
@@ -172,33 +166,6 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
     }
   }
 
-  // Future<void> getlistOrderDelivery() async {
-  //   try {
-  //     LoadingDialog.open(context);
-  //     final _orders = await HomeApi.getDeliveryOrders();
-  //     if (!mounted) return;
-
-  //     setState(() {
-  //       deliveryOrders = _orders;
-  //       WidgetsBinding.instance.addPostFrameCallback((_) {
-  //         if (_scrollController.hasClients) {
-  //           _scrollController.animateTo(
-  //             0.0,
-  //             duration: Duration(milliseconds: 500),
-  //             curve: Curves.easeInOut,
-  //           );
-  //         }
-  //       });
-  //     });
-
-  //     LoadingDialog.close(context);
-  //   } on Exception catch (e) {
-  //     if (!mounted) return;
-  //     LoadingDialog.close(context);
-  //     print(e);
-  //   }
-  // }
-
   Future openDialogImage() async {
     final img = await picker.pickImage(source: ImageSource.camera);
     return img;
@@ -291,10 +258,6 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
       body: TabBarView(
         controller: _tabController,
         children: [
-          // Center(
-          //     child: Diverpage(
-          //   deliveryOrders: deliveryOrders,
-          // )),
           deliveryOrders.isEmpty
               ? Column(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.center, children: [Text('ไม่พบข้อมูล')])
               : ListView.builder(

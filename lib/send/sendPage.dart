@@ -21,7 +21,7 @@ class _SendPageState extends State<SendPage> {
         Container(
           height: 120,
           decoration: BoxDecoration(
-            color: kTextRedWanningColor,
+            color: kButtonColor,
             borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30), bottomRight: Radius.circular(30)),
           ),
         ),

@@ -26,7 +26,6 @@ class _LoginpageState extends State<Loginpage> {
     return Scaffold(
       backgroundColor: kButtondiableColor,
       body: SingleChildScrollView(
-        // physics: NeverScrollableScrollPhysics(),
         child: Column(
           children: [
             Padding(padding: EdgeInsets.only(top: height(context) / 5.5)),
@@ -94,35 +93,7 @@ class _LoginpageState extends State<Loginpage> {
                         ),
                       ],
                     ),
-                    // Row(
-                    //   mainAxisAlignment: MainAxisAlignment.center,
-                    //   children: [
-                    //     Row(
-                    //       mainAxisSize: MainAxisSize.min,
-                    //       children: [
-                    //         Checkbox(
-                    //           value: isChecked,
-                    //           onChanged: (bool? value) {
-                    //             setState(() {
-                    //               isChecked = value ?? false;
-                    //             });
-                    //           },
-                    //         ),
-                    //         SizedBox(width: 2), // ระยะห่างระหว่าง Text กับ Checkbox
-                    //         Text("Remember Me"),
-                    //       ],
-                    //     ),
-                    //     SizedBox(
-                    //       width: size.width * 0.18,
-                    //     ),
-                    //     Text(
-                    //       'forget password?',
-                    //       style: TextStyle(
-                    //         color: red1,
-                    //       ),
-                    //     )
-                    //   ],
-                    // ),
+
                     SizedBox(height: size.height * 0.03),
 
                     Container(
@@ -155,7 +126,6 @@ class _LoginpageState extends State<Loginpage> {
                                 await prefs.setString('name', login['data']['name']);
                                 await prefs.setString('email', login['data']['email']);
                                 await prefs.setString('phone', login['data']['phone']);
-                                // await prefs.setString('image', login['data']['image']);
                                 await prefs.setBool('remember', isChecked);
 
                                 Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => ListOrdersMapPage()), (route) => false);

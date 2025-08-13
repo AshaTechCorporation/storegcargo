@@ -1,11 +1,5 @@
-import 'dart:developer';
-import 'dart:io';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
-import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:storegcargo/constants.dart';
 import 'package:storegcargo/widgets/dialog.dart';
@@ -71,10 +65,7 @@ class _ProfilePageState extends State<ProfilePage> {
             SizedBox(height: 10),
             ListTile(
               title: Text('ชื่อ - นามสกุล', style: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.w400)),
-              trailing: Text(
-                name ?? "", // "${profile?.firstname ?? '-'} ${profile?.lastname ?? '-'}",
-                style: TextStyle(color: Colors.grey, fontSize: 16, fontWeight: FontWeight.w500),
-              ),
+              trailing: Text(name ?? "", style: TextStyle(color: Colors.grey, fontSize: 16, fontWeight: FontWeight.w500)),
             ),
             ListTile(
               title: Text('เบอร์ติดต่อ', style: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.w400)),
@@ -85,7 +76,7 @@ class _ProfilePageState extends State<ProfilePage> {
               trailing: Text('${email ?? 'xxx@gmail.com'} ', style: TextStyle(color: Colors.grey, fontSize: 16, fontWeight: FontWeight.w500)),
             ),
             Padding(padding: const EdgeInsets.only(left: 15, right: 15), child: Divider()),
-            SizedBox(height: size.height * 0.02),
+            SizedBox(height: size.height * 0.04),
             InkWell(
               onTap: () async {
                 final out = await showDialog(
@@ -111,15 +102,10 @@ class _ProfilePageState extends State<ProfilePage> {
                 }
               },
               child: Container(
-                // margin: const EdgeInsets.fromLTRB(16, 16, 16, 30),
                 width: size.width * 0.9,
                 height: size.height * 0.055,
-                decoration: BoxDecoration(
-                  // color: kMainColor,
-                  border: Border.all(color: kTextRedWanningColor),
-                  borderRadius: BorderRadius.all(Radius.circular(5)),
-                ),
-                child: Center(child: Text('ออกจากระบบ', style: TextStyle(color: kTextRedWanningColor, fontSize: 20, fontWeight: FontWeight.w500))),
+                decoration: BoxDecoration(border: Border.all(color: kButtonColor), borderRadius: BorderRadius.all(Radius.circular(5))),
+                child: Center(child: Text('ออกจากระบบ', style: TextStyle(color: kButtonColor, fontSize: 20, fontWeight: FontWeight.bold))),
               ),
             ),
             SizedBox(height: 20),
@@ -140,5 +126,3 @@ class _ProfilePageState extends State<ProfilePage> {
     await prefs.remove('phone');
   }
 }
-
-// ProfilePage

@@ -1,4 +1,3 @@
-// import 'package:background_location/background_location.dart';
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -39,10 +38,6 @@ class _DiverpageState extends State<Diverpage> with WidgetsBindingObserver {
     // _getCuttentLocation();
     permissionHandler();
   }
-
-  // Future<void> initialize() async {
-  //   await permissionHandler();
-  // }
 
   Future<void> permissionHandler() async {
     await Permission.locationWhenInUse.request();
